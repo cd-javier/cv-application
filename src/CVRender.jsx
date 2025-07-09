@@ -17,7 +17,9 @@ export default function CVRender({ cv }) {
                 <h4>{education.school}</h4>
                 <p className="position">
                   {education.title}{' '}
-                  <span className="date">{education.date}</span>
+                  <span className="date">
+                    {education.date.split('-').reverse().join('/')}
+                  </span>
                 </p>
                 <p>{education.details}</p>
               </div>
@@ -28,7 +30,7 @@ export default function CVRender({ cv }) {
 
       {cv.experience.length ? (
         <div className="section">
-          <h3>Educational Experience</h3>
+          <h3>Practical Experience</h3>
           {cv.experience.map((experience, index) => {
             return (
               <div className="experience" key={index}>
@@ -36,7 +38,8 @@ export default function CVRender({ cv }) {
                 <p className="position">
                   {experience.position}{' '}
                   <span className="date">
-                    {experience.dateFrom} - {experience.dateTo}
+                    {experience.dateFrom.split('-').reverse().join('/')} -{' '}
+                    {experience.dateTo.split('-').reverse().join('/')}
                   </span>
                 </p>
                 <p>{experience.details}</p>
