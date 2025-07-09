@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import CVRender from './CVRender';
-import { Input, GeneralInfo } from './form-components';
+import { Input, GeneralInfo, EduExperience, ProExperience } from './form-components';
 
 const cvStructure = {
   info: {
@@ -12,6 +12,7 @@ const cvStructure = {
   },
   education: [
     {
+      id: 0,
       school: 'School Name',
       title: 'Title',
       date: '20-20-20',
@@ -20,6 +21,7 @@ const cvStructure = {
   ],
   experience: [
     {
+      id: 0,
       company: 'OS',
       position: 'GM',
       dateFrom: '20-20',
@@ -49,37 +51,24 @@ function App() {
     setCv(newCv);
   }
 
+  function handleEduRender(data) {
+    const newCv = { ...cv };
+    newCv.education = data;
+    setCv(newCv);
+  }
+
+  function handleProRender(data) {
+    const newCv = { ...cv };
+    newCv.experience = data;
+    setCv(newCv);
+  }
+
   return (
     <>
       <form>
         <GeneralInfo handleRender={handleGeneralRender} />
-        <fieldset>
-          <legend>Educational Experience</legend>
-          <fieldset>
-            <ul>
-              <Input label="School" type="text" id="school" />
-              <Input label="Title of Study" type="text" id="title" />
-              <Input label="Date of graduation" type="date" id="date" />
-              <Input label="Description" type="textarea" id="details" />
-            </ul>
-          </fieldset>
-        </fieldset>
-        <fieldset>
-          <legend>Practical Experience</legend>
-          <fieldset>
-            <ul>
-              <Input label="Company" type="text" id="company" />
-              <Input label="Position" type="text" id="position" />
-              <Input label="From" type="date" id="dateFrom" />
-              <Input label="To" type="date" id="dateTo" />
-              <Input
-                label="Description of the role"
-                type="textarea"
-                id="details"
-              />
-            </ul>
-          </fieldset>
-        </fieldset>
+        <EduExperience handleRender={handleEduRender} />
+        <ProExperience handleRender={handleProRender}/>
         <fieldset>
           <legend>Skills</legend>
           <ul>
