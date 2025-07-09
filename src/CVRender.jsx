@@ -3,7 +3,9 @@ export default function CVRender({ cv }) {
     <>
       <h2>{cv.info.name}</h2>
       <p>
-        {cv.info.phone} | {cv.info.email} | {cv.info.website}
+        {[cv.info.phone, cv.info.email, cv.info.website]
+          .filter((value) => value !== null)
+          .join(' | ')}
       </p>
 
       {cv.education.length ? (
