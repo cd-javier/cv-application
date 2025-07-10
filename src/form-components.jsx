@@ -143,18 +143,18 @@ function SingleEduExperience({
     <fieldset>
       <ul>
         <Input
-          label="School"
-          type="text"
-          index={index}
-          id="school"
-          isDisabled={isDisabled}
-          handleOnChange={handleOnChange}
-        />
-        <Input
           label="Title Of Study"
           type="text"
           index={index}
           id="title"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+        />
+        <Input
+          label="School"
+          type="text"
+          index={index}
+          id="school"
           isDisabled={isDisabled}
           handleOnChange={handleOnChange}
         />
@@ -285,18 +285,18 @@ function SingleProExperience({
     <fieldset>
       <ul>
         <Input
-          label="Company"
-          type="text"
-          index={index}
-          id="company"
-          isDisabled={isDisabled}
-          handleOnChange={handleOnChange}
-        />
-        <Input
           label="Position"
           type="text"
           index={index}
           id="position"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+        />
+        <Input
+          label="Company"
+          type="text"
+          index={index}
+          id="company"
           isDisabled={isDisabled}
           handleOnChange={handleOnChange}
         />
