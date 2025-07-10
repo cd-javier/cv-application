@@ -1,3 +1,17 @@
+header {
+  background-color: #ffffff;
+  width: 1016px;
+  padding: 1rem;
+  margin: 1rem auto 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 0;
+}
+
 .signature {
   font-size: 0.75rem;
   font-weight: 200;
