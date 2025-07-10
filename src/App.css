@@ -15,8 +15,6 @@
 /* GENERAL STYLE */
 
 body {
-  display: flex;
-  justify-content: center;
   background-color: var(--body-bg);
   color: var(--text);
 }
@@ -26,6 +24,8 @@ body {
   gap: 1rem;
   padding: 1rem;
   align-items: flex-start;
+  margin: 0 auto;
+  width: min-content;
 }
 
 .app > * {
