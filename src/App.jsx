@@ -25,27 +25,19 @@ function App() {
   const [cv, setCv] = useState(blankCv);
 
   function handleGeneralRender(data) {
-    const newCv = { ...cv };
-    newCv.info = data;
-    setCv(newCv);
+    setCv({ ...cv, info: data });
   }
 
   function handleEduRender(data) {
-    const newCv = { ...cv };
-    newCv.education = data;
-    setCv(newCv);
+    setCv({ ...cv, education: data });
   }
 
   function handleProRender(data) {
-    const newCv = { ...cv };
-    newCv.experience = data;
-    setCv(newCv);
+    setCv({ ...cv, experience: data });
   }
 
   function handleSkillsRender(data) {
-    const newCv = { ...cv };
-    newCv.skills = data;
-    setCv(newCv);
+    setCv({ ...cv, skills: data });
   }
 
   return (
