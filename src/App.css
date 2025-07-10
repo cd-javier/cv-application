@@ -21,9 +21,9 @@ body {
 
 .app {
   display: flex;
+  align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  align-items: flex-start;
   margin: 0 auto;
   width: min-content;
 }
@@ -181,6 +181,9 @@ button > svg {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  position: sticky;
+  top: 1rem;
 }
 
 .cv-render h2,
