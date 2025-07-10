@@ -1,10 +1,10 @@
 export default function CVRender({ cv }) {
   return (
-    <>
+    <div className="cv-render">
       <h2>{cv.info.name}</h2>
-      <p>
+      <p className="general-info">
         {[cv.info.phone, cv.info.email, cv.info.website]
-          .filter((value) => value !== null)
+          .filter((value) => value)
           .join(' | ')}
       </p>
 
@@ -23,7 +23,7 @@ export default function CVRender({ cv }) {
                     </span>
                   )}
                 </p>
-                <p>{education.details}</p>
+                <p className="details">{education.details}</p>
               </div>
             );
           })}
@@ -47,7 +47,7 @@ export default function CVRender({ cv }) {
                       experience.dateTo.split('-').reverse().join('/')}
                   </span>
                 </p>
-                <p>{experience.details}</p>
+                <p className="details">{experience.details}</p>
               </div>
             );
           })}
@@ -64,6 +64,6 @@ export default function CVRender({ cv }) {
           </ul>
         </div>
       ) : null}
-    </>
+    </div>
   );
 }

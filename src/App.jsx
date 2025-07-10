@@ -49,7 +49,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className='app'>
       <form>
         <GeneralInfo handleRender={handleGeneralRender} />
         <EduExperience handleRender={handleEduRender} />
@@ -57,7 +57,7 @@ function App() {
         <Skills handleRender={handleSkillsRender} />
       </form>
       <CVRender cv={cv} />
-    </>
+    </div>
   );
 }
 

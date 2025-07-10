@@ -1,0 +1,229 @@
+@import url('./modern-normalize.css');
+
+:root {
+  --body-bg: #f5f7fa;
+  --form-bg: #ffffff;
+  --fieldset-bg: #f7f9fa;
+  --button-bg: #4c6ef5;
+  --text: #2e3440;
+  --input-bg: #f0f4f8;
+  --input-fieldset-bg: #ffffff;
+  --disabled-bg: #e2e6ea;
+  --disabled-text: #80858e;
+}
+
+/* GENERAL STYLE */
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: var(--body-bg);
+  color: var(--text);
+}
+
+.app {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: flex-start;
+}
+
+.app > * {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* FORM STYLE */
+
+form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+
+  background-color: var(--form-bg);
+}
+
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  border: none;
+}
+
+form fieldset > fieldset {
+  padding: 1rem;
+  background-color: var(--fieldset-bg);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+legend {
+  float: left;
+  font-size: 1.25rem;
+}
+
+form ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+fieldset > fieldset input,
+fieldset > fieldset textarea {
+  background-color: var(--input-fieldset-bg);
+}
+
+textarea {
+  height: 5rem;
+}
+
+input:disabled,
+textarea:disabled {
+  background-color: var(--disabled-bg);
+  color: var(--disabled-text);
+  cursor: not-allowed;
+  font-style: italic;
+  box-shadow: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px solid var(--button-bg);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.buttons > button,
+.skill > button {
+  margin: 0;
+}
+
+button {
+  width: min-content;
+  margin: 0 auto;
+  border: none;
+
+  background-color: var(--button-bg);
+  padding: 0.5rem;
+  border-radius: 100%;
+  line-height: 0;
+  box-shadow: 0 2px 6px rgba(76, 110, 245, 0.2);
+}
+
+button > svg {
+  width: 1.25rem;
+  fill: white;
+}
+
+.skill {
+  display: flex;
+  gap: 1rem;
+}
+
+.skill li {
+  flex: 1;
+}
+
+/* CV RENDER STYLE */
+
+.cv-render {
+  width: 600px;
+  min-height: 850px;
+  background: white;
+  color: var(--text);
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cv-render h2,
+.cv-render h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.cv-render p,
+.cv-render h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.cv-render .details {
+  font-size: 0.8rem;
+}
+
+.cv-render h2 {
+  text-align: center;
+}
+
+.cv-render .general-info {
+  text-align: center;
+  padding: 0.5rem 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.section {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.experience h4 {
+  font-weight: normal;
+  font-size: 1.25rem;
+}
+
+.experience .position {
+  font-weight: bold;
+}
+
+.experience .date {
+  font-weight: normal;
+}
+
+.experience .details {
+  white-space: pre-wrap;
+  line-height: 150%;
+}
+
+.cv-render ul {
+  margin: 0;
+  padding: 0 0 0 2rem;
+  list-style-type: '- ';
+}

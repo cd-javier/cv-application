@@ -89,9 +89,19 @@ function GeneralInfo({ handleRender }) {
         />
       </ul>
       {!isDisabled ? (
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>check</title>
+            <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+          </svg>
+        </button>
       ) : (
-        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleEdit}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>pencil</title>
+            <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+          </svg>
+        </button>
       )}
     </fieldset>
   );
@@ -165,12 +175,31 @@ function SingleEduExperience({
           handleOnChange={handleOnChange}
         />
       </ul>
-      {!isDisabled ? (
-        <button onClick={handleSubmit}>Submit</button>
-      ) : (
-        <button onClick={handleEdit}>Edit</button>
-      )}
-      {isDeletable && <button onClick={handleDelete}>Delete</button>}
+      <div className="buttons">
+        {!isDisabled ? (
+          <button onClick={handleSubmit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>check</title>
+              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+            </svg>
+          </button>
+        ) : (
+          <button onClick={handleEdit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>pencil</title>
+              <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        )}
+        {isDeletable && (
+          <button onClick={handleDelete}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>delete</title>
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        )}
+      </div>
     </fieldset>
   );
 }
@@ -210,7 +239,12 @@ function EduExperience({ handleRender }) {
           key={elm.id}
         />
       ))}
-      <button onClick={handleAdd}>+</button>
+      <button onClick={handleAdd}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>plus</title>
+          <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+        </svg>
+      </button>
     </fieldset>
   );
 }
@@ -291,12 +325,31 @@ function SingleProExperience({
           handleOnChange={handleOnChange}
         />
       </ul>
-      {!isDisabled ? (
-        <button onClick={handleSubmit}>Submit</button>
-      ) : (
-        <button onClick={handleEdit}>Edit</button>
-      )}
-      {isDeletable && <button onClick={handleDelete}>Delete</button>}
+      <div className="buttons">
+        {!isDisabled ? (
+          <button onClick={handleSubmit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>check</title>
+              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+            </svg>
+          </button>
+        ) : (
+          <button onClick={handleEdit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>pencil</title>
+              <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        )}
+        {isDeletable && (
+          <button onClick={handleDelete}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>delete</title>
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        )}
+      </div>
     </fieldset>
   );
 }
@@ -336,7 +389,12 @@ function ProExperience({ handleRender }) {
           key={elm.id}
         />
       ))}
-      <button onClick={handleAdd}>+</button>
+      <button onClick={handleAdd}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>plus</title>
+          <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+        </svg>
+      </button>
     </fieldset>
   );
 }
@@ -374,7 +432,7 @@ function SingleSkill({
   }
 
   return (
-    <div>
+    <div className="skill">
       <Input
         type="text"
         index={index}
@@ -383,11 +441,28 @@ function SingleSkill({
         handleOnChange={handleOnChange}
       />
       {!isDisabled ? (
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>check</title>
+            <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+          </svg>
+        </button>
       ) : (
-        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleEdit}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>pencil</title>
+            <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+          </svg>
+        </button>
       )}
-      {isDeletable && <button onClick={handleDelete}>Delete</button>}
+      {isDeletable && (
+        <button onClick={handleDelete}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>delete</title>
+            <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }
@@ -427,7 +502,12 @@ function Skills({ handleRender }) {
           key={elm.id}
         />
       ))}
-      <button onClick={handleAdd}>+</button>
+      <button onClick={handleAdd}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>plus</title>
+          <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+        </svg>
+      </button>
     </fieldset>
   );
 }
