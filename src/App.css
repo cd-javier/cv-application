@@ -256,8 +256,17 @@ button > svg {
 .print-button {
   width: 100%;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 0.5rem;
   color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.print-button svg {
+  margin-top: 3px;
 }
 
 /* PRINT STYLE */
