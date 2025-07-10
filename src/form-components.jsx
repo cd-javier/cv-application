@@ -1,11 +1,28 @@
 import { useState } from 'react';
 
-function Input({ label, type, handleOnChange, index, id, isDisabled }) {
+function Input({
+  label,
+  type,
+  handleOnChange,
+  handleEnter,
+  index,
+  id,
+  isDisabled,
+}) {
   const [value, setValue] = useState('');
+
   function intHandleOnChange(e) {
     setValue(e.target.value);
     handleOnChange(e);
   }
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleEnter(e);
+    }
+  }
+
   return (
     <li>
       {label && (
@@ -28,6 +45,7 @@ function Input({ label, type, handleOnChange, index, id, isDisabled }) {
           id={(index !== undefined ? index + '-' : '') + id}
           type={type}
           onChange={intHandleOnChange}
+          onKeyDown={handleKeyDown}
         />
       )}
     </li>
@@ -56,56 +74,58 @@ function GeneralInfo({ handleRender }) {
   }
 
   return (
-    <form>
-      <fieldset>
-        <h2>General Information</h2>
-        <ul>
-          <Input
-            label="Name"
-            type="text"
-            id="name"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="Phone Number"
-            type="phone"
-            id="phone"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="Email"
-            type="email"
-            id="email"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="Website"
-            type="website"
-            id="website"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-        </ul>
-        {!isDisabled ? (
-          <button onClick={handleSubmit}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <title>check</title>
-              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-            </svg>
-          </button>
-        ) : (
-          <button onClick={handleEdit}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <title>pencil</title>
-              <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-            </svg>
-          </button>
-        )}
-      </fieldset>
-    </form>
+    <fieldset>
+      <h2>General Information</h2>
+      <ul>
+        <Input
+          label="Name"
+          type="text"
+          id="name"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="Phone Number"
+          type="phone"
+          id="phone"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="Email"
+          type="email"
+          id="email"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="Website"
+          type="website"
+          id="website"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+      </ul>
+      {!isDisabled ? (
+        <button type="button" onClick={handleSubmit}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>check</title>
+            <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+          </svg>
+        </button>
+      ) : (
+        <button type="button" onClick={handleEdit}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>pencil</title>
+            <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+          </svg>
+        </button>
+      )}
+    </fieldset>
   );
 }
 
@@ -142,69 +162,71 @@ function SingleEduExperience({
   }
 
   return (
-    <form>
-      <fieldset>
-        <ul>
-          <Input
-            label="Title Of Study"
-            type="text"
-            index={index}
-            id="title"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="School"
-            type="text"
-            index={index}
-            id="school"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="Date of Graduation"
-            type="date"
-            index={index}
-            id="date"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="Description"
-            type="textarea"
-            index={index}
-            id="details"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-        </ul>
-        <div className="buttons">
-          {!isDisabled ? (
-            <button onClick={handleSubmit}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>check</title>
-                <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-              </svg>
-            </button>
-          ) : (
-            <button onClick={handleEdit}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>pencil</title>
-                <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-              </svg>
-            </button>
-          )}
-          {isDeletable && (
-            <button onClick={handleDelete}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>delete</title>
-                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-              </svg>
-            </button>
-          )}
-        </div>
-      </fieldset>
-    </form>
+    <fieldset>
+      <ul>
+        <Input
+          label="Title Of Study"
+          type="text"
+          index={index}
+          id="title"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="School"
+          type="text"
+          index={index}
+          id="school"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="Date of Graduation"
+          type="date"
+          index={index}
+          id="date"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="Description"
+          type="textarea"
+          index={index}
+          id="details"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+      </ul>
+      <div className="buttons">
+        {!isDisabled ? (
+          <button type="button" onClick={handleSubmit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>check</title>
+              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+            </svg>
+          </button>
+        ) : (
+          <button type="button" onClick={handleEdit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>pencil</title>
+              <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        )}
+        {isDeletable && (
+          <button type="button" onClick={handleDelete}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>delete</title>
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        )}
+      </div>
+    </fieldset>
   );
 }
 
@@ -243,7 +265,7 @@ function EduExperience({ handleRender }) {
           key={elm.id}
         />
       ))}
-      <button onClick={handleAdd}>
+      <button type="button" onClick={handleAdd}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <title>plus</title>
           <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
@@ -286,77 +308,80 @@ function SingleProExperience({
   }
 
   return (
-    <form>
-      <fieldset>
-        <ul>
-          <Input
-            label="Position"
-            type="text"
-            index={index}
-            id="position"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="Company"
-            type="text"
-            index={index}
-            id="company"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="From"
-            type="date"
-            index={index}
-            id="dateFrom"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="To"
-            type="date"
-            index={index}
-            id="dateTo"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-          <Input
-            label="Description"
-            type="textarea"
-            index={index}
-            id="details"
-            isDisabled={isDisabled}
-            handleOnChange={handleOnChange}
-          />
-        </ul>
-        <div className="buttons">
-          {!isDisabled ? (
-            <button onClick={handleSubmit}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>check</title>
-                <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-              </svg>
-            </button>
-          ) : (
-            <button onClick={handleEdit}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>pencil</title>
-                <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-              </svg>
-            </button>
-          )}
-          {isDeletable && (
-            <button onClick={handleDelete}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>delete</title>
-                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-              </svg>
-            </button>
-          )}
-        </div>
-      </fieldset>
-    </form>
+    <fieldset>
+      <ul>
+        <Input
+          label="Position"
+          type="text"
+          index={index}
+          id="position"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="Company"
+          type="text"
+          index={index}
+          id="company"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="From"
+          type="date"
+          index={index}
+          id="dateFrom"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="To"
+          type="date"
+          index={index}
+          id="dateTo"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+        <Input
+          label="Description"
+          type="textarea"
+          index={index}
+          id="details"
+          isDisabled={isDisabled}
+          handleOnChange={handleOnChange}
+          handleEnter={handleSubmit}
+        />
+      </ul>
+      <div className="buttons">
+        {!isDisabled ? (
+          <button type="button" onClick={handleSubmit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>check</title>
+              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+            </svg>
+          </button>
+        ) : (
+          <button type="button" onClick={handleEdit}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>pencil</title>
+              <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+            </svg>
+          </button>
+        )}
+        {isDeletable && (
+          <button type="button" onClick={handleDelete}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>delete</title>
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+        )}
+      </div>
+    </fieldset>
   );
 }
 
@@ -395,7 +420,7 @@ function ProExperience({ handleRender }) {
           key={elm.id}
         />
       ))}
-      <button onClick={handleAdd}>
+      <button type="button" onClick={handleAdd}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <title>plus</title>
           <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
@@ -445,16 +470,17 @@ function SingleSkill({
         id="company"
         isDisabled={isDisabled}
         handleOnChange={handleOnChange}
+        handleEnter={handleSubmit}
       />
       {!isDisabled ? (
-        <button onClick={handleSubmit}>
+        <button type="button" onClick={handleSubmit}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>check</title>
             <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
           </svg>
         </button>
       ) : (
-        <button onClick={handleEdit}>
+        <button type="button" onClick={handleEdit}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>pencil</title>
             <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
@@ -462,7 +488,7 @@ function SingleSkill({
         </button>
       )}
       {isDeletable && (
-        <button onClick={handleDelete}>
+        <button type="button" onClick={handleDelete}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>delete</title>
             <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
@@ -508,7 +534,7 @@ function Skills({ handleRender }) {
           key={elm.id}
         />
       ))}
-      <button onClick={handleAdd}>
+      <button type="button" onClick={handleAdd}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <title>plus</title>
           <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
