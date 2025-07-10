@@ -17,9 +17,11 @@ export default function CVRender({ cv }) {
                 <h4>{education.school}</h4>
                 <p className="position">
                   {education.title}{' '}
-                  <span className="date">
-                    {education.date.split('-').reverse().join('/')}
-                  </span>
+                  {education.date && (
+                    <span className="date">
+                      {education.date.split('-').reverse().join('/')}
+                    </span>
+                  )}
                 </p>
                 <p>{education.details}</p>
               </div>
