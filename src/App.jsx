@@ -1,7 +1,12 @@
 import './App.css';
 import { useState } from 'react';
 import CVRender from './CVRender';
-import { Input, GeneralInfo, EduExperience, ProExperience } from './form-components';
+import {
+  Input,
+  GeneralInfo,
+  EduExperience,
+  ProExperience,
+} from './form-components';
 
 const cvStructure = {
   info: {
@@ -29,7 +34,11 @@ const cvStructure = {
       details: '- Blobloblo blobloblo',
     },
   ],
-  skills: ['one', 'two', 'three'],
+  skills: [
+    { id: 0, skill: 'one' },
+    { id: 0, skill: 'two' },
+    { id: 0, skill: 'three' },
+  ],
 };
 
 function App() {
@@ -68,7 +77,7 @@ function App() {
       <form>
         <GeneralInfo handleRender={handleGeneralRender} />
         <EduExperience handleRender={handleEduRender} />
-        <ProExperience handleRender={handleProRender}/>
+        <ProExperience handleRender={handleProRender} />
         <fieldset>
           <legend>Skills</legend>
           <ul>
