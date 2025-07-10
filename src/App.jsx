@@ -6,53 +6,23 @@ import {
   GeneralInfo,
   EduExperience,
   ProExperience,
+  Skills,
 } from './form-components';
 
-const cvStructure = {
+const blankCv = {
   info: {
-    name: 'Name',
-    phone: 'Phone Number',
-    email: 'email',
-    website: 'website',
+    name: null,
+    phone: null,
+    email: null,
+    website: null,
   },
-  education: [
-    {
-      id: 0,
-      school: 'School Name',
-      title: 'Title',
-      date: '20-20-20',
-      details: 'Details',
-    },
-  ],
-  experience: [
-    {
-      id: 0,
-      company: 'OS',
-      position: 'GM',
-      dateFrom: '20-20',
-      dateTo: '20-21',
-      details: '- Blobloblo blobloblo',
-    },
-  ],
-  skills: [
-    { id: 0, skill: 'one' },
-    { id: 0, skill: 'two' },
-    { id: 0, skill: 'three' },
-  ],
+  education: [],
+  experience: [],
+  skills: [],
 };
 
 function App() {
-  const [cv, setCv] = useState({
-    info: {
-      name: '',
-      phone: null,
-      email: null,
-      website: null,
-    },
-    education: [],
-    experience: [],
-    skills: [],
-  });
+  const [cv, setCv] = useState(blankCv);
 
   function handleGeneralRender(data) {
     const newCv = { ...cv };
@@ -72,18 +42,19 @@ function App() {
     setCv(newCv);
   }
 
+  function handleSkillsRender(data) {
+    const newCv = { ...cv };
+    newCv.skills = data;
+    setCv(newCv);
+  }
+
   return (
     <>
       <form>
         <GeneralInfo handleRender={handleGeneralRender} />
         <EduExperience handleRender={handleEduRender} />
         <ProExperience handleRender={handleProRender} />
-        <fieldset>
-          <legend>Skills</legend>
-          <ul>
-            <Input type="text" id="skills" />
-          </ul>
-        </fieldset>
+        <Skills handleRender={handleSkillsRender} />
       </form>
       <CVRender cv={cv} />
     </>

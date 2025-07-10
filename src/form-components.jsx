@@ -8,9 +8,11 @@ function Input({ label, type, handleOnChange, index, id, isDisabled }) {
   }
   return (
     <li>
-      <label htmlFor={(index !== undefined ? index + '-' : '') + id}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={(index !== undefined ? index + '-' : '') + id}>
+          {label}
+        </label>
+      )}
       {type === 'textarea' ? (
         <textarea
           value={value}
@@ -339,4 +341,95 @@ function ProExperience({ handleRender }) {
   );
 }
 
-export { Input, GeneralInfo, EduExperience, ProExperience };
+function SingleSkill({
+  handleSingleRender,
+  handleSingleDelete,
+  index,
+  isDeletable,
+}) {
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [data, setData] = useState({});
+
+  function handleOnChange(e) {
+    const newData = data;
+    newData.id = index;
+    newData.skill = e.target.value ? e.target.value : null;
+    setData(newData);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleSingleRender(data);
+    setIsDisabled(true);
+  }
+
+  function handleEdit(e) {
+    e.preventDefault();
+    setIsDisabled(false);
+  }
+
+  function handleDelete(e) {
+    e.preventDefault();
+    handleSingleDelete(index);
+  }
+
+  return (
+    <div>
+      <Input
+        type="text"
+        index={index}
+        id="company"
+        isDisabled={isDisabled}
+        handleOnChange={handleOnChange}
+      />
+      {!isDisabled ? (
+        <button onClick={handleSubmit}>Submit</button>
+      ) : (
+        <button onClick={handleEdit}>Edit</button>
+      )}
+      {isDeletable && <button onClick={handleDelete}>Delete</button>}
+    </div>
+  );
+}
+
+function Skills({ handleRender }) {
+  const [data, setData] = useState([{ id: 0 }]);
+
+  function handleSingleRender(singleData) {
+    const newData = [...data.filter((single) => single.id !== singleData.id)];
+    newData.push(singleData);
+    newData.sort((a, b) => a.id - b.id);
+    setData(newData);
+    handleRender(newData);
+  }
+
+  function handleSingleDelete(index) {
+    const newData = [...data.filter((single) => single.id !== index)];
+    setData(newData);
+    handleRender(newData);
+  }
+
+  function handleAdd(e) {
+    e.preventDefault();
+    const newData = [...data, { id: Date.now() }];
+    setData(newData);
+  }
+
+  return (
+    <fieldset>
+      <legend>Skills</legend>
+      {data.map((elm) => (
+        <SingleSkill
+          handleSingleRender={handleSingleRender}
+          handleSingleDelete={handleSingleDelete}
+          isDeletable={data.length > 1}
+          index={elm.id}
+          key={elm.id}
+        />
+      ))}
+      <button onClick={handleAdd}>+</button>
+    </fieldset>
+  );
+}
+
+export { Input, GeneralInfo, EduExperience, ProExperience, Skills };
