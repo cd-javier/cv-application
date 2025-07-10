@@ -1,0 +1,10 @@
+.signature {
+  font-size: 0.75rem;
+  font-weight: 200;
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.signature a {
+  color: inherit;
+}
