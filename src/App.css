@@ -181,7 +181,12 @@ button > svg {
 }
 
 .cv-render h2 {
+  font-size: 2rem;
   text-align: center;
+}
+
+.cv-render h3 {
+  font-size: 1.5rem;
 }
 
 .cv-render .general-info {
@@ -215,6 +220,8 @@ button > svg {
 
 .experience .date {
   font-weight: normal;
+  font-style: italic;
+  font-size: 0.75rem;
 }
 
 .experience .details {
@@ -224,6 +231,28 @@ button > svg {
 
 .cv-render ul {
   margin: 0;
-  padding: 0 0 0 2rem;
-  list-style-type: '- ';
+  padding: 0 0 0 1rem;
+}
+
+.print-button {
+  width: 100%;
+  border-radius: 4px;
+  padding: 1rem;
+  color: white;
+}
+
+/* PRINT STYLE */
+
+.pdf-preview {
+  width: 210mm;
+  padding: 15mm;
+  background: white;
+  font-size: 12pt;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+}
+
+.pdf-preview h2 {
+  white-space: pre-wrap;
+  font-family: Arial, sans-serif;
 }

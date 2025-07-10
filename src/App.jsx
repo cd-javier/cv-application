@@ -1,8 +1,8 @@
 import './App.css';
 import { useState } from 'react';
 import CVRender from './CVRender';
+import html2pdf from 'html2pdf.js';
 import {
-  Input,
   GeneralInfo,
   EduExperience,
   ProExperience,
@@ -40,6 +40,26 @@ function App() {
     setCv({ ...cv, skills: data });
   }
 
+  function handlePrint(e) {
+    e.preventDefault();
+    const element = document.querySelector('.cv-render');
+    element.classList.add('pdf-preview');
+
+    html2pdf()
+      .set({
+        margin: 0,
+        filename: 'cv.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      })
+      .from(element)
+      .save()
+      .then(() => {
+        element.classList.remove('pdf-preview');
+      });
+  }
+
   return (
     <div className="app">
       <form>
@@ -47,6 +67,9 @@ function App() {
         <EduExperience handleRender={handleEduRender} />
         <ProExperience handleRender={handleProRender} />
         <Skills handleRender={handleSkillsRender} />
+        <button onClick={handlePrint} className="print-button">
+          PRINT
+        </button>
       </form>
       <CVRender cv={cv} />
     </div>
