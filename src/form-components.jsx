@@ -3,6 +3,7 @@ import { useState } from 'react';
 function Input({
   label,
   type,
+  autocomplete,
   handleOnChange,
   handleEnter,
   index,
@@ -42,6 +43,7 @@ function Input({
         <input
           value={value}
           disabled={isDisabled}
+          autocomplete={autocomplete || 'off'}
           id={(index !== undefined ? index + '-' : '') + id}
           type={type}
           onChange={intHandleOnChange}
@@ -81,6 +83,7 @@ function GeneralInfo({ handleRender }) {
           label="Name"
           type="text"
           id="name"
+          autocomplete={'name'}
           isDisabled={isDisabled}
           handleOnChange={handleOnChange}
           handleEnter={handleSubmit}
@@ -89,6 +92,7 @@ function GeneralInfo({ handleRender }) {
           label="Phone Number"
           type="phone"
           id="phone"
+          autocomplete={'tel'}
           isDisabled={isDisabled}
           handleOnChange={handleOnChange}
           handleEnter={handleSubmit}
@@ -97,6 +101,7 @@ function GeneralInfo({ handleRender }) {
           label="Email"
           type="email"
           id="email"
+          autocomplete={'email'}
           isDisabled={isDisabled}
           handleOnChange={handleOnChange}
           handleEnter={handleSubmit}
@@ -105,6 +110,7 @@ function GeneralInfo({ handleRender }) {
           label="Website"
           type="website"
           id="website"
+          autocomplete={'url'}
           isDisabled={isDisabled}
           handleOnChange={handleOnChange}
           handleEnter={handleSubmit}
