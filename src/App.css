@@ -71,7 +71,17 @@ form fieldset > form fieldset {
 
 legend {
   float: left;
+  display: block;
+  position: relative;
   font-size: 1.25rem;
+  /* padding-bottom: 1rem; */
+}
+
+form h2 {
+  font-weight: normal;
+  font-size: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 form ul {

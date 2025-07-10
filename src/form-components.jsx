@@ -56,9 +56,9 @@ function GeneralInfo({ handleRender }) {
   }
 
   return (
-    <form action="">
+    <form>
       <fieldset>
-        <legend>General Information</legend>
+        <h2>General Information</h2>
         <ul>
           <Input
             label="Name"
@@ -233,7 +233,7 @@ function EduExperience({ handleRender }) {
 
   return (
     <fieldset>
-      <legend>Educational Experience</legend>
+      <h2>Educational Experience</h2>
       {data.map((elm) => (
         <SingleEduExperience
           handleSingleRender={handleSingleRender}
@@ -286,7 +286,7 @@ function SingleProExperience({
   }
 
   return (
-    <form action="">
+    <form>
       <fieldset>
         <ul>
           <Input
@@ -385,7 +385,7 @@ function ProExperience({ handleRender }) {
 
   return (
     <fieldset>
-      <legend>Practical Experience</legend>
+      <h2>Practical Experience</h2>
       {data.map((elm) => (
         <SingleProExperience
           handleSingleRender={handleSingleRender}
@@ -498,7 +498,7 @@ function Skills({ handleRender }) {
 
   return (
     <fieldset>
-      <legend>Skills</legend>
+      <h2>Skills</h2>
       {data.map((elm) => (
         <SingleSkill
           handleSingleRender={handleSingleRender}
