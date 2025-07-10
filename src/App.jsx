@@ -11,10 +11,10 @@ import {
 
 const blankCv = {
   info: {
-    name: null,
-    phone: null,
-    email: null,
-    website: null,
+    name: 'Full Name',
+    phone: '07123 4567890',
+    email: 'email@domain.com',
+    website: 'www.website.com',
   },
   education: [],
   experience: [],
@@ -49,7 +49,7 @@ function App() {
   }
 
   return (
-    <div className='app'>
+    <div className="app">
       <form>
         <GeneralInfo handleRender={handleGeneralRender} />
         <EduExperience handleRender={handleEduRender} />
