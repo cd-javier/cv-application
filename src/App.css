@@ -45,6 +45,15 @@ form {
   background-color: var(--form-bg);
 }
 
+form > form,
+fieldset > form {
+  width: auto;
+  padding: 0;
+  border-radius: none;
+  background-color: none;
+  display: block;
+}
+
 form fieldset {
   display: flex;
   flex-direction: column;
@@ -53,7 +62,7 @@ form fieldset {
   border: none;
 }
 
-form fieldset > fieldset {
+form fieldset > form fieldset {
   padding: 1rem;
   background-color: var(--fieldset-bg);
   border-radius: 6px;
